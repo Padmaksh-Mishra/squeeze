@@ -22,10 +22,10 @@ Squeeze is a free and open source application that merges all code files from a 
 
    The entry point is in `src/main.py`. To merge files from a repository, run:
 
-       python -m src.main <repository_url> <skip_probability (1-1000)> [--code-only]
+       python -m src.main <repository_url> <skip_probability (0-1000)> [--code-only]
 
    - Replace `<repository_url>` with the URL of the GitHub repository.
-   - `<skip_probability>` is an integer from 1 to 1000; for instance, 10 means approximately 10 out of 1000 lines will be skipped.
+   - `<skip_probability>` is an integer from 0 to 1000; for instance, 10 means approximately 10 out of 1000 lines will be skipped.
    - Add the `--code-only` flag to process only recognized code file types and skip non-code files.
 
 3. **Output**
