@@ -1,38 +1,48 @@
-# Repo Merger
+# Squeeze
 
-## Overview
-Repo Merger is a Python application designed to merge all files from a specified GitHub repository into a single file. This is particularly useful for processing code with language models, as it provides context by including the relative paths of each file.
+Squeeze is a free and open source application that merges all code files from a GitHub repository into a single, human-readable file. Each file’s content is prefixed with its relative path, and it supports probabilistically skipping lines to reduce output size for LLM processing.
 
 ## Features
-- Merges all files from a GitHub repository into one file.
-- Includes the relative path of each file at the beginning of its content.
-- Implements a probability meter to skip lines, reducing the overall length of the merged file.
 
-## Installation
-To get started with Repo Merger, clone the repository and install the required dependencies:
+- **Repository Merging:** Clones a GitHub repository and stitches together all code files.
+- **File Tagging:** Each file is prefixed with its relative path.
+- **Probabilistic Line Skipping:** Reduce text length by skipping lines based on a configurable probability.
+- **Code-Only Mode:** Use the `--code-only` flag to include only recognized code files (e.g., `.py`, `.java`, `.cpp`, etc.), filtering out non-code and auto-generated files.
+- **FOSS:** This project is free and open source. Contributions and ideas are welcome!
 
-```bash
-git clone <repository-url>
-cd repo-merger
-pip install -r requirements.txt
-```
+## How to Use
 
-## Usage
-To run the application, execute the following command:
+1. **Install Dependencies**
 
-```bash
-python src/main.py <github-repo-url>
-```
+   Make sure you have Python installed (tested with Python 3.11). Install required dependencies:
 
-Replace `<github-repo-url>` with the URL of the GitHub repository you wish to merge.
+       pip install -r requirements.txt
 
-## Functionality
-- **Fetching Repository Files**: The application fetches the list of files from the specified GitHub repository.
-- **Merging Files**: It merges the contents of all files, prepending each file's relative path.
-- **Probability Meter**: The application can skip lines based on a specified probability to manage the size of the output.
+2. **Run the Application**
+
+   The entry point is in `src/main.py`. To merge files from a repository, run:
+
+       python -m src.main <repository_url> <skip_probability (1-1000)> [--code-only]
+
+   - Replace `<repository_url>` with the URL of the GitHub repository.
+   - `<skip_probability>` is an integer from 1 to 1000; for instance, 10 means approximately 10 out of 1000 lines will be skipped.
+   - Add the `--code-only` flag to process only recognized code file types and skip non-code files.
+
+3. **Output**
+
+   The merged content is saved to `merged_output.txt` in the project root.
 
 ## Contributing
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
 
-## License
-This project is licensed under the MIT License. See the LICENSE file for more details.# squeeze
+This project is FOSS and welcomes your contributions!
+
+- **Share Your Ideas:** Whether it's a bug fix, new feature, or performance improvement, we invite you to share your ideas.
+- **Open Issues & Pull Requests:** Feel free to open issues or submit pull requests.
+- **Community Discussions:** Join our discussions to help shape the future of Squeeze.
+
+
+## Contact
+
+For ideas, questions, or feedback, please open an issue or reach out via our repository discussions.
+
+Happy coding!
